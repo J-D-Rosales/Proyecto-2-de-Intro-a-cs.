@@ -3,7 +3,7 @@ import numpy as np
 from sklearn import datasets
 
 # =============================================================================
-# 1. FUNCIONES (ARREGLADO)
+# 1. FUNCIONES
 # =============================================================================
 
 def procesar_imagen(nombre_archivo):
@@ -13,9 +13,6 @@ def procesar_imagen(nombre_archivo):
     if img is None:
         return None
 
-    # --- CORRECCIÓN CRÍTICA ---
-    # Faltaba esta línea. Es la que invierte los colores (Blanco a Negro) y limpia el ruido.
-    # Sin esto, comparas una "foto negativa" con una "positiva" y falla todo.
     _, img_binaria = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY_INV)
 
     # Reducir a 8x8 pixeles (Usamos img_binaria, que ya está invertida)
